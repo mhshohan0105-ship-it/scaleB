@@ -7,7 +7,7 @@ export default function SiteHeader() {
   return (
     <header className="site-header">
       <Link className="wordmark" href="/" aria-label="ScaleB home">
-        <Image src="/scaleb-logo.jpeg" alt="ScaleB" width={768} height={768} priority />
+        <Image src="/scaleb-logo-wide.jpeg" alt="ScaleB" width={2048} height={800} priority />
       </Link>
       <nav className="desktop-nav" aria-label="Main navigation">
         {navItems.map((item) => <Link href={item.href} key={item.href}>{item.label}</Link>)}

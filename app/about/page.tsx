@@ -17,13 +17,13 @@ export default function AboutPage() {
         <div className="section-wrap about-content">
           <div className="about-top"><p className="eyebrow eyebrow-light">A little about us</p><span>INDEPENDENT BY DESIGN</span></div>
           <h2>Thoughtful people.<br /><span>Useful technology.</span></h2>
-          <div className="about-bottom"><p>We pair senior-level thinking with hands-on making, keeping the work focused, transparent, and human. Our teams stay close to the problem, communicate clearly, and take responsibility for what ships.</p><Link className="button button-light" href="/contact">Meet your next team <ArrowUpRight size={17} /></Link></div>
+          <div className="about-bottom"><p>We pair senior level thinking with hands-on making, keeping the work focused, transparent and human. Our teams stay close to the problem, communicate clearly and take responsibility for what ships.</p><Link className="button button-light" href="/contact">Meet your next team <ArrowUpRight size={17} /></Link></div>
           <div className="stats-grid">{stats.map((stat) => <div className="stat" key={stat.value}><strong>{stat.value}</strong><span>{stat.label}</span></div>)}</div>
         </div>
       </section>
       <section className="section-wrap about-principles">
         <div><p className="eyebrow">What matters to us</p><h2>Good work is a team sport.</h2></div>
-        <p>Open collaboration, careful craft, and a steady focus on outcomes shape every partnership. We bring curiosity to the hard questions and care to the details people use every day.</p>
+        <p>Open collaboration, careful craft and a steady focus on outcomes shape every partnership. We bring curiosity to the hard questions and care to the details people use every day.</p>
       </section>
     </main>
   );

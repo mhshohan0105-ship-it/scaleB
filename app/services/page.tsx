@@ -6,13 +6,13 @@ import ServiceList from "../components/service-list";
 
 export const metadata: Metadata = {
   title: "Services | ScaleB",
-  description: "Custom software, product strategy, web and mobile apps, cloud, applied AI, and quality engineering from ScaleB.",
+  description: "Custom software, product strategy, web and mobile apps, cloud, applied AI, quality engineering, digital marketing and content creation from ScaleB.",
 };
 
 export default function ServicesPage() {
   return (
     <main className="module-page">
-      <PageIntro eyebrow="Services / 01" title="Good ideas deserve great execution." description="One senior, collaborative team for strategy, design, software engineering, and the work that comes after launch." />
+      <PageIntro eyebrow="Services / 01" title="Good ideas deserve great execution." description="One senior, collaborative team for strategy, design, software engineering, marketing and the content that helps you grow after launch." />
       <section className="section-wrap module-content">
         <ServiceList />
       </section>

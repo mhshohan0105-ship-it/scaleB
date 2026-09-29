@@ -1,25 +1,26 @@
 export const navItems = [
+  { label: "Home", href: "/" },
   { label: "Services", href: "/services" },
   { label: "Work", href: "/work" },
   { label: "About", href: "/about" },
-  { label: "Approach", href: "/approach" },
+  { label: "Blog", href: "/blog" },
 ];
 
 export const services = [
   {
     title: "Custom software",
-    description: "Purpose-built platforms and tools that make your business work smarter.",
+    description: "Purpose built platforms and tools that make your business work smarter.",
     tags: ["Web platforms", "SaaS", "Integrations"],
   },
   {
     title: "Product design & strategy",
-    description: "Research-led product thinking that turns complex needs into clear experiences.",
+    description: "Research led product thinking that turns complex needs into clear experiences.",
     tags: ["Product strategy", "UX / UI", "Prototyping"],
   },
   {
     title: "Web & mobile apps",
     description: "Fast, intuitive digital products that feel right on every screen.",
-    tags: ["Web apps", "iOS / Android", "E-commerce"],
+    tags: ["Web apps", "iOS / Android", "Ecommerce"],
   },
   {
     title: "Cloud & platforms",
@@ -36,6 +37,16 @@ export const services = [
     description: "Reliable, accessible products with the care and confidence users expect.",
     tags: ["QA engineering", "Accessibility", "Security"],
   },
+  {
+    title: "Digital marketing",
+    description: "Campaigns that reach the right people and turn visitors into loyal customers.",
+    tags: ["SEO", "Social media", "Paid ads"],
+  },
+  {
+    title: "Content creation",
+    description: "Words, visuals and videos that tell your story and keep your audience coming back.",
+    tags: ["Copywriting", "Graphic design", "Video"],
+  },
 ];
 
 export const projects = [
@@ -50,7 +61,7 @@ export const projects = [
   {
     title: "Makers, online",
     category: "Commerce",
-    type: "Strategy · E-commerce · Engineering",
+    type: "Strategy · Ecommerce · Engineering",
     description: "A sharper digital storefront for the next generation of makers.",
     image: "https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&w=1200&q=85",
     accent: "blue",

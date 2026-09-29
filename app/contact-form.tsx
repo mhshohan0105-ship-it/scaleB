@@ -23,7 +23,7 @@ export default function ContactForm() {
       </div>
       <label>What are you looking to build?<select defaultValue="" name="service" required><option disabled value="">Choose a service</option><option>Custom software</option><option>Product design & strategy</option><option>Web or mobile app</option><option>Cloud, AI or automation</option><option>Something else</option></select></label>
       <label>A little about your project<textarea name="message" placeholder="The idea, the challenge, the opportunity..." required rows={3} /></label>
-      <div className="form-submit-row"><p>We usually reply within two business days.</p><button className="button button-lime" type="submit">Send your note <ArrowUpRight size={17} /></button></div>
+      <div className="form-submit-row"><p>We usually reply within two business days.</p><button className="button button-accent" type="submit">Send your note <ArrowUpRight size={17} /></button></div>
     </form>
   );
 }

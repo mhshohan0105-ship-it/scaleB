@@ -5,13 +5,14 @@ export default function SiteFooter() {
   return (
     <footer className="site-footer">
       <div className="section-wrap footer-main">
-        <Link className="wordmark wordmark-footer" href="/" aria-label="ScaleB home"><Image src="/scaleb-logo.jpeg" alt="ScaleB" width={768} height={768} /></Link>
+        <Link className="wordmark wordmark-footer" href="/" aria-label="ScaleB home"><Image src="/scaleb-logo-wide.jpeg" alt="ScaleB" width={2048} height={800} /></Link>
         <p>Good technology, made<br />with good people.</p>
         <nav className="footer-links" aria-label="Footer navigation">
+          <Link href="/">Home</Link>
           <Link href="/services">Services</Link>
           <Link href="/work">Work</Link>
           <Link href="/about">About</Link>
-          <Link href="/approach">Approach</Link>
+          <Link href="/blog">Blog</Link>
           <Link href="/contact">Contact</Link>
         </nav>
         <Link className="back-top" href="/">Back to home ↑</Link>
