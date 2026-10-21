@@ -23,7 +23,7 @@ export default function SiteFooter() {
         </div>
         <div className="footer-col">
           <h2>Say hello</h2>
-          <Link href="mailto:hello@scaleb.com">hello@scaleb.com</Link>
+          <Link href="mailto:info@scalebbd.com">info@scalebbd.com</Link>
           <Link href={office.phoneHref}>{office.phone}</Link>
           <address className="footer-address">{office.name}<br />{office.address}</address>
         </div>

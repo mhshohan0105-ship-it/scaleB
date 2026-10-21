@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { ArrowUpRight, Check } from "lucide-react";
+import { ArrowUpRight, Check, LoaderCircle } from "lucide-react";
 import { estimator } from "../site-data";
+import { sendForm } from "../send-form";
 
 const roundTo = (value: number, step: number) => Math.round(value / step) * step;
 const usd = (value: number) => `$${value.toLocaleString("en-US")}`;
@@ -13,7 +14,9 @@ export default function CostEstimator() {
   const [features, setFeatures] = useState<number[]>([0, 2]);
   const [design, setDesign] = useState(1);
   const [timeline, setTimeline] = useState(1);
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
+  const [error, setError] = useState("");
+  const [started] = useState(() => String(Date.now()));
 
   const featureCost = features.reduce((sum, index) => sum + estimator.features[index].cost, 0);
   const total = (estimator.types[type].base + featureCost) * estimator.designs[design].factor * estimator.timelines[timeline].factor;
@@ -25,9 +28,25 @@ export default function CostEstimator() {
     setFeatures((current) => current.includes(index) ? current.filter((item) => item !== index) : [...current, index]);
   }
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setSent(true);
+    const data = Object.fromEntries(new FormData(event.currentTarget)) as Record<string, string>;
+    const details = [
+      `Project type: ${estimator.types[type].label}`,
+      `Features: ${features.length ? features.map((index) => estimator.features[index].label).join(", ") : "None selected"}`,
+      `Design level: ${estimator.designs[design].label}`,
+      `Timeline: ${estimator.timelines[timeline].label}`,
+      `Estimate shown: ${usd(low)} to ${usd(high)} (${bdt(low)} to ${bdt(high)}), about ${weeks} weeks`,
+    ].join("\n");
+    setStatus("sending");
+    setError("");
+    try {
+      await sendForm({ ...data, form: "estimate", details, started });
+      setStatus("sent");
+    } catch (sendError) {
+      setError((sendError as Error).message);
+      setStatus("idle");
+    }
   }
 
   return (
@@ -75,14 +94,16 @@ export default function CostEstimator() {
         <span className="estimate-bdt">{bdt(low)} to {bdt(high)}</span>
         <span className="estimate-time">About {weeks} weeks</span>
         <p className="estimate-note">This is an indicative range. Get a detailed fixed scope proposal for free.</p>
-        {sent ? (
-          <div className="estimate-sent" role="status"><Check size={18} /> Thanks. This demo form is not connected to an inbox yet.</div>
+        {status === "sent" ? (
+          <div className="estimate-sent" role="status"><Check size={18} /> Thanks. We got your request and will send a detailed proposal within one business day.</div>
         ) : (
           <form className="estimate-form" onSubmit={handleSubmit}>
             <input aria-label="Full name" autoComplete="name" name="name" placeholder="Full name" required />
             <input aria-label="Email" autoComplete="email" name="email" placeholder="Email" required type="email" />
             <input aria-label="Phone" autoComplete="tel" name="phone" placeholder="Phone" type="tel" />
-            <button className="button button-accent" type="submit">Get my detailed proposal <ArrowUpRight size={17} /></button>
+            <input aria-hidden="true" autoComplete="off" className="form-trap" name="website" tabIndex={-1} />
+            {error && <p className="form-error" role="alert">{error}</p>}
+            <button className="button button-accent" disabled={status === "sending"} type="submit">{status === "sending" ? <>Sending <LoaderCircle className="spin" size={17} /></> : <>Get my detailed proposal <ArrowUpRight size={17} /></>}</button>
           </form>
         )}
       </aside>

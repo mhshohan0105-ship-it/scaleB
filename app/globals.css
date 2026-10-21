@@ -430,6 +430,12 @@ h1, h2, h3, p { margin-top: 0; }
 .contact-form select:invalid { color: var(--dim); }
 .form-submit-row { display: flex; justify-content: space-between; align-items: center; gap: 15px; }
 .form-submit-row p { margin: 0; color: var(--dim); font-size: 12px; }
+.form-trap { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.form-error { margin: 0; padding: 12px 14px; border: 1px solid #e5484d66; border-radius: 12px; background: #e5484d1a; color: #ff8a8d; font-size: 13px; line-height: 1.5; }
+:root[data-theme="light"] .form-error { color: #b42318; }
+.button:disabled { opacity: .7; cursor: wait; transform: none; }
+.spin { animation: spin 1s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
 .form-success { min-height: 330px; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 34px; border: 1px solid #f2a92255; border-radius: var(--radius); }
 .form-success > span { width: 44px; height: 44px; display: grid; place-items: center; background: var(--amber); color: var(--ink); border-radius: 50%; }
 .form-success h3 { margin: 20px 0 8px; font-size: 25px; }

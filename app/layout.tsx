@@ -59,6 +59,7 @@ const structuredData = {
       image: `${siteUrl}/opengraph-image.png`,
       description,
       telephone: office.phone,
+      email: "info@scalebbd.com",
       address: {
         "@type": "PostalAddress",
         streetAddress: "Huda Apartment (3rd Floor), House 59, Road 4, Block C",

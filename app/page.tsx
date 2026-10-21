@@ -147,7 +147,7 @@ export default function Home() {
           <p>Tell us about your idea. We will reply within one business day with a clear plan, timeline and estimate.</p>
           <div className="hero-actions">
             <Link className="button button-accent" href="/contact">Get started <ArrowUpRight size={17} /></Link>
-            <Link className="button button-ghost" href="mailto:hello@scaleb.com">hello@scaleb.com</Link>
+            <Link className="button button-ghost" href="mailto:info@scalebbd.com">info@scalebbd.com</Link>
           </div>
         </div>
       </section>
