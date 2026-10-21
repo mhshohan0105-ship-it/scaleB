@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 import SiteFooter from "./components/site-footer";
 import SiteHeader from "./components/site-header";
 import ScrollReveal from "./components/scroll-reveal";
+import IntroLoader from "./components/intro-loader";
 
 export const metadata: Metadata = {
   title: "ScaleB | Digital products, custom software & engineering",
@@ -16,8 +18,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" data-scroll-behavior="smooth">
-      <body>
+    <html lang="en" className="intro-pending" data-theme="dark" data-scroll-behavior="smooth" suppressHydrationWarning>
+      <body id="top">
+        {/* Applies the saved theme before first paint so light mode never flashes dark. */}
+        <Script id="theme-init" strategy="beforeInteractive">{`try{if(localStorage.getItem("scaleb-theme")==="light")document.documentElement.dataset.theme="light"}catch(e){}`}</Script>
+        <IntroLoader />
         <SiteHeader />
         {children}
         <SiteFooter />

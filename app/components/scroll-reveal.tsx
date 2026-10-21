@@ -5,13 +5,13 @@ import { usePathname } from "next/navigation";
 
 const targets = [
   "main h1", "main h2", "main h3", "main p", "main .eyebrow",
-  ".service-row", ".project-grid", ".blog-featured", ".blog-card", ".blog-cover-article",
-  ".module-link", ".stat", ".button", ".text-link", ".contact-form > *", ".blog-filters", ".project-filters",
-  ".footer-main > *", ".footer-bottom",
+  ".service-card", ".model-card", ".process-step", ".value-card", ".stats-card", ".showcase-track", ".tech-sphere", ".estimator", ".faq-item", ".cta-card", ".project-grid", ".blog-featured", ".blog-card", ".blog-cover-article",
+  ".button", ".text-link", ".contact-form > *", ".blog-filters", ".project-filters",
+  ".footer-main > *", ".module-cta", ".stat", ".footer-bottom",
 ].join(", ");
 
 // Elements that already animate on load, or live in the first screen, are left alone.
-const skipped = ".hero, .module-hero, .blog-back, .hero-intro, .hero-line, .module-content .service-list";
+const skipped = ".hero, .module-hero, .blog-back, .hero-intro, .hero-line, .module-content .service-grid, .estimator *, .cta-card *, .service-card *, .model-card *, .process-step *, .value-card *, .faq-item *, .stats-card *";
 
 export default function ScrollReveal() {
   const pathname = usePathname();

@@ -1,17 +1,48 @@
-import { Braces, Sparkles } from "lucide-react";
+"use client";
+
+import { useRef, type PointerEvent } from "react";
+import Image from "next/image";
+import { Cloud, Code2, Cpu, Smartphone } from "lucide-react";
+
+const chips = [
+  { label: "Software", Icon: Code2 },
+  { label: "Mobile", Icon: Smartphone },
+  { label: "Cloud", Icon: Cloud },
+  { label: "AI", Icon: Cpu },
+];
 
 export default function HeroVisual() {
+  const stage = useRef<HTMLDivElement>(null);
+
+  function tilt(event: PointerEvent<HTMLDivElement>) {
+    const box = event.currentTarget.getBoundingClientRect();
+    const x = (event.clientX - box.left) / box.width - 0.5;
+    const y = (event.clientY - box.top) / box.height - 0.5;
+    stage.current?.style.setProperty("--rx", `${(-y * 14).toFixed(2)}deg`);
+    stage.current?.style.setProperty("--ry", `${(x * 18).toFixed(2)}deg`);
+  }
+
+  function reset() {
+    stage.current?.style.setProperty("--rx", "0deg");
+    stage.current?.style.setProperty("--ry", "0deg");
+  }
+
   return (
-    <div className="hero-visual" aria-label="ScaleB digital product dashboard concept">
-      <div className="visual-topline"><span><i></i><i></i><i></i></span><span>SCALEB / PRODUCT SYSTEMS</span><span>↗</span></div>
-      <div className="visual-heading"><div><span className="visual-label">LIVE / OVERVIEW</span><h2>Momentum<br />in motion.</h2></div><div className="orbit-mark" aria-hidden="true"><span></span><span></span><span></span><b>SB</b></div></div>
-      <div className="visual-chart" aria-hidden="true">
-        <div className="chart-grid"><span>100</span><span>75</span><span>50</span><span>25</span></div>
-        <div className="chart-bars">{[30, 43, 38, 58, 49, 72, 63, 85, 78, 100, 91, 118].map((height, index) => <i key={index} style={{ height: `${height}px` }} />)}</div>
-        <div className="chart-caption"><span>PRODUCT VELOCITY</span><strong>+38.6%</strong></div>
+    <div className="hero-visual" onPointerMove={tilt} onPointerLeave={reset} aria-hidden="true">
+      <div className="hero-stage" ref={stage}>
+        <div className="hero-glow"></div>
+        <div className="hero-rings">{[0, 1, 2, 3].map((ring) => <span key={ring}></span>)}</div>
+        <div className="hero-orbit">
+          {chips.map(({ label, Icon }) => <span className="hero-chip" key={label}><Icon size={15} /> {label}</span>)}
+        </div>
+        <Image className="hero-mark theme-dark-only" src="/scaleb-mark.png" alt="" width={464} height={371} sizes="200px" loading="eager" fetchPriority="high" />
+        <Image className="hero-mark theme-light-only" src="/scaleb-mark-dark.png" alt="" width={464} height={371} sizes="200px" loading="eager" />
+        <div className="hero-code">
+          <span>&lt;ScaleB /&gt;</span>
+          <span>build()</span>
+          <span>{"{ scale: true }"}</span>
+        </div>
       </div>
-      <div className="visual-footer"><span><Sparkles size={14} /> Built around your next move</span><span>SCALB.™</span></div>
-      <div className="floating-tag"><span>BUILD / 2025</span><Braces size={18} /></div>
     </div>
   );
 }

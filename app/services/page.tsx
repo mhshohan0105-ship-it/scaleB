@@ -14,7 +14,7 @@ export default function ServicesPage() {
     <main className="module-page">
       <PageIntro eyebrow="Services / 01" title="Good ideas deserve great execution." description="One senior, collaborative team for strategy, design, software engineering, marketing and the content that helps you grow after launch." />
       <section className="section-wrap module-content">
-        <ServiceList />
+        <ServiceList showTags />
       </section>
       <section className="module-cta section-wrap"><div><p className="eyebrow">Have a challenge in mind?</p><h2>Let&apos;s find the right way forward.</h2></div><Link className="button button-dark" href="/contact">Talk with our team <ArrowUpRight size={17} /></Link></section>
     </main>

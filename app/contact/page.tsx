@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Building2, MapPin, Phone } from "lucide-react";
 import ContactForm from "../contact-form";
 import PageIntro from "../components/page-intro";
+import { office } from "../site-data";
 
 export const metadata: Metadata = {
   title: "Contact | ScaleB",
@@ -13,7 +14,13 @@ export default function ContactPage() {
     <main className="module-page">
       <PageIntro eyebrow="Contact / 05" title="Let’s make it happen." description="Tell us a little about what you’re building. We’ll get back to you with the right next step." />
       <section className="contact section-wrap contact-page-content">
-        <div className="contact-copy"><p className="eyebrow">Start a conversation</p><h2>Have a good one in mind?</h2><p>Share the idea, the challenge, or the opportunity. We&apos;ll start from there.</p><a className="contact-email" href="mailto:hello@scaleb.com">hello@scaleb.com <ArrowUpRight size={17} /></a></div>
+        <div className="contact-copy"><p className="eyebrow">Start a conversation</p><h2>Have a good one in mind?</h2><p>Share the idea, the challenge, or the opportunity. We&apos;ll start from there.</p><a className="contact-email" href="mailto:hello@scaleb.com">hello@scaleb.com <ArrowUpRight size={17} /></a>
+          <address className="office-card">
+            <span className="office-name"><Building2 size={18} /> {office.name}</span>
+            <a href={office.phoneHref}><Phone size={16} /> {office.phone}</a>
+            <span><MapPin size={16} /> {office.address}</span>
+          </address>
+        </div>
         <ContactForm />
       </section>
     </main>
