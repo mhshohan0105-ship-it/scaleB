@@ -5,7 +5,7 @@ import SiteFooter from "./components/site-footer";
 import SiteHeader from "./components/site-header";
 import ScrollReveal from "./components/scroll-reveal";
 import IntroLoader from "./components/intro-loader";
-import { office, services, siteUrl } from "./site-data";
+import { office, services, siteUrl, socials } from "./site-data";
 
 const description = "ScaleB is a software, web and mobile app development company in Banani, Dhaka. We design, build and grow custom software, websites, apps and AI solutions for ambitious teams.";
 
@@ -67,6 +67,7 @@ const structuredData = {
         postalCode: "1213",
         addressCountry: "BD",
       },
+      sameAs: socials.map((social) => social.href),
       areaServed: "Worldwide",
       knowsAbout: services.map((service) => service.title),
     },

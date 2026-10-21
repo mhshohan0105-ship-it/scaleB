@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
-import { navItems, office, services } from "../site-data";
+import { navItems, office, services, socials } from "../site-data";
 
 export default function SiteFooter() {
   return (
@@ -26,6 +26,14 @@ export default function SiteFooter() {
           <Link href="mailto:info@scalebbd.com">info@scalebbd.com</Link>
           <Link href={office.phoneHref}>{office.phone}</Link>
           <address className="footer-address">{office.name}<br />{office.address}</address>
+          <div className="footer-socials">
+            {socials.map((social) => (
+              <a aria-label={`ScaleB on ${social.label}`} href={social.href} key={social.label} rel="noopener noreferrer" target="_blank">
+                <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M13.5 21v-7.5h2.6l.4-3H13.5V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H7.8v3h2.6V21h3.1z" /></svg>
+                {social.label}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
       <div className="section-wrap footer-bottom">

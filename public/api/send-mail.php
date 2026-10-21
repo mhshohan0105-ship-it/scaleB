@@ -7,6 +7,9 @@ const TO_EMAIL = 'info@scalebbd.com';
 const SITE_NAME = 'ScaleB Website';
 const MAX_PER_HOUR = 5;
 
+// The server clock runs on UTC; show times in the email as Dhaka time.
+date_default_timezone_set('Asia/Dhaka');
+
 header('Content-Type: application/json; charset=utf-8');
 header('X-Content-Type-Options: nosniff');
 

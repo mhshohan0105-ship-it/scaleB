@@ -15,6 +15,10 @@ export const office = {
   address: "Huda Apartment (3rd Floor), House 59, Road 4, Block C, Banani, Dhaka, Bangladesh, 1213",
 };
 
+export const socials = [
+  { label: "Facebook", href: "https://www.facebook.com/scalebbd/" },
+];
+
 export const services = [
   {
     title: "Custom software",

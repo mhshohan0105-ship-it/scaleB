@@ -7,6 +7,10 @@ DirectoryIndex index.html
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
+  # www.scalebbd.com -> scalebbd.com, so Google sees one site
+  RewriteCond %{HTTP_HOST} ^www\.scalebbd\.com$ [NC]
+  RewriteRule ^ https://scalebbd.com%{REQUEST_URI} [L,R=301]
+
   # Force https
   RewriteCond %{HTTPS} !=on
   RewriteCond %{HTTP:X-Forwarded-Proto} !https
