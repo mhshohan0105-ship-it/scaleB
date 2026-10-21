@@ -8,6 +8,9 @@ type BlogPostPageProps = {
   params: Promise<{ slug: string }>;
 };
 
+// Static export: only the posts listed below exist, anything else is a 404.
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return blogPosts.map((post) => ({ slug: post.slug }));
 }
