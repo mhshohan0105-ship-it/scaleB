@@ -5,7 +5,8 @@ import PageIntro from "../components/page-intro";
 import ServiceList from "../components/service-list";
 
 export const metadata: Metadata = {
-  title: "Services | ScaleB",
+  title: "Services",
+  alternates: { canonical: "/services/" },
   description: "Custom software, product strategy, web and mobile apps, cloud, applied AI, quality engineering, digital marketing and content creation from ScaleB.",
 };
 

@@ -5,7 +5,8 @@ import PageIntro from "../components/page-intro";
 import { stats } from "../site-data";
 
 export const metadata: Metadata = {
-  title: "About | ScaleB",
+  title: "About",
+  alternates: { canonical: "/about/" },
   description: "Meet ScaleB, an independent digital technology and custom software partner for ambitious teams.",
 };
 

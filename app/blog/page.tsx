@@ -4,7 +4,8 @@ import BlogList from "./blog-list";
 import { blogCategories, blogPosts } from "../blog-data";
 
 export const metadata: Metadata = {
-  title: "Blog | ScaleB",
+  title: "Blog",
+  alternates: { canonical: "/blog/" },
   description: "Articles on website development, cyber security and how the internet works from the ScaleB team.",
 };
 

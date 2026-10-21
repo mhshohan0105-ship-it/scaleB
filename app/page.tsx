@@ -11,8 +11,8 @@ import TechSphere from "./components/tech-sphere";
 import { engagementModels, faqs, homeStats, processSteps, projects, technologies, values } from "./site-data";
 
 export const metadata: Metadata = {
-  title: "ScaleB | Digital products, custom software & engineering",
-  description: "ScaleB builds thoughtful digital products, custom software and experiences for ambitious teams.",
+  title: { absolute: "ScaleB | Software, Web & App Development Company in Dhaka" },
+  alternates: { canonical: "/" },
 };
 
 function SectionHeading({ eyebrow, title, accent, text, center = false }: { eyebrow: string; title: string; accent: string; text?: string; center?: boolean }) {

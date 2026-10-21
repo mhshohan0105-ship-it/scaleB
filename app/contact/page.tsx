@@ -5,7 +5,8 @@ import PageIntro from "../components/page-intro";
 import { office } from "../site-data";
 
 export const metadata: Metadata = {
-  title: "Contact | ScaleB",
+  title: "Contact",
+  alternates: { canonical: "/contact/" },
   description: "Tell ScaleB about your digital product or custom software project.",
 };
 

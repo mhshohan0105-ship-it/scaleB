@@ -4,7 +4,8 @@ import Projects from "../projects";
 import { projects } from "../site-data";
 
 export const metadata: Metadata = {
-  title: "Work | ScaleB",
+  title: "Work",
+  alternates: { canonical: "/work/" },
   description: "Explore live launches and in house products from ScaleB.",
 };
 

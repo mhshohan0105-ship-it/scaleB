@@ -6,6 +6,8 @@ export const navItems = [
   { label: "Blog", href: "/blog" },
 ];
 
+export const siteUrl = "https://scalebbd.com";
+
 export const office = {
   name: "Banani Office",
   phone: "+8801314-779988",

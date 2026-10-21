@@ -19,7 +19,12 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   const { slug } = await params;
   const post = blogPosts.find((item) => item.slug === slug);
   if (!post) return {};
-  return { title: `${post.title} | ScaleB Blog`, description: post.excerpt };
+  return {
+    title: post.title,
+    description: post.excerpt,
+    alternates: { canonical: `/blog/${post.slug}/` },
+    openGraph: { type: "article", siteName: "ScaleB", title: post.title, description: post.excerpt, url: `/blog/${post.slug}/`, images: [post.image] },
+  };
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
