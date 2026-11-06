@@ -653,6 +653,27 @@ h1, h2, h3, p { margin-top: 0; }
 /* Footer */
 :root[data-theme="light"] .site-footer { background: radial-gradient(circle at 90% 0, #f2a9221f, transparent 40%), #fbfaf7; border-top-color: #00000010; }
 
+/* ScaleB Insider page */
+.insider-actions { justify-content: center; margin-top: 30px; }
+.model-grid.insider-compare { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.model-grid.insider-compare > :last-child { grid-column: auto; }
+.insider-compare ul { margin-bottom: 0; }
+.insider-compare li { align-items: flex-start; line-height: 1.5; }
+.insider-compare li svg { margin-top: 3px; }
+:root[data-theme] .model-card li svg.insider-x { color: var(--dim); }
+.insider-shots { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+/* Column widths follow the image shapes, so dashboard and phone end up the same height. */
+.insider-shots-lead { grid-template-columns: minmax(0, 1.6fr) minmax(0, .4623fr); margin-bottom: 18px; }
+.insider-shot { display: flex; flex-direction: column; margin: 0; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); transition: border-color .3s ease, transform .3s ease; }
+.insider-shot:hover { border-color: #f2a92266; transform: translateY(-4px); }
+.insider-shot img { display: block; width: 100%; height: auto; border-bottom: 1px solid var(--line); }
+.insider-shot figcaption { padding: 16px 20px 18px; color: var(--muted); font-size: 14px; line-height: 1.55; }
+.insider-shot figcaption strong { display: block; margin-bottom: 2px; color: var(--text); font-size: 16px; }
+:root[data-theme="light"] .insider-shot { border-color: #ffffff; box-shadow: var(--card-shadow); }
+@media (max-width: 720px) {
+  .model-grid.insider-compare, .insider-shots, .insider-shots-lead { grid-template-columns: 1fr; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-delay: 0s !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }

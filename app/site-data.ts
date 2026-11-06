@@ -12,6 +12,7 @@ export const office = {
   name: "Banani Office",
   phone: "+8801314-779988",
   phoneHref: "tel:+8801314779988",
+  whatsappHref: "https://wa.me/8801314779988",
   address: "Huda Apartment (3rd Floor), House 59, Road 4, Block C, Banani, Dhaka, Bangladesh, 1213",
 };
 
@@ -62,7 +63,7 @@ export const services = [
   },
 ];
 
-export const projects: { title: string; category: string; type: string; description: string; image?: string; accent: string; url?: string; status?: string }[] = [
+export const projects: { title: string; category: string; type: string; description: string; image?: string; accent: string; url?: string; page?: string; status?: string }[] = [
   {
     title: "TripBook",
     category: "Travel",
@@ -75,10 +76,10 @@ export const projects: { title: string; category: string; type: string; descript
   {
     title: "ScaleB Insider",
     category: "Our products",
-    type: "In house app · In development",
-    description: "Our own app, built in house by the ScaleB team. More details coming soon.",
+    type: "Our product · Web app",
+    description: "Travel agency management and accounting software. One set of books for tickets, visas, refunds and invoices.",
     accent: "amber",
-    status: "Coming soon",
+    page: "/work/insider/",
   },
 ];
 

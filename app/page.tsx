@@ -5,6 +5,7 @@ import { ArrowRight, ArrowUpRight, Check, Plus } from "lucide-react";
 import CostEstimator from "./components/cost-estimator";
 import HeroVisual from "./components/hero-visual";
 import ProjectCover from "./components/project-cover";
+import SectionHeading from "./components/section-heading";
 import ServiceList from "./components/service-list";
 import StatsCounter from "./components/stats-counter";
 import TechSphere from "./components/tech-sphere";
@@ -14,15 +15,6 @@ export const metadata: Metadata = {
   title: { absolute: "ScaleB | Software, Web & App Development Company in Dhaka" },
   alternates: { canonical: "/" },
 };
-
-function SectionHeading({ eyebrow, title, accent, text, center = false }: { eyebrow: string; title: string; accent: string; text?: string; center?: boolean }) {
-  return (
-    <div className={center ? "section-heading section-heading-center" : "section-heading"}>
-      <div><p className="eyebrow pill">{eyebrow}</p><h2>{title} <span>{accent}</span></h2></div>
-      {text && <p>{text}</p>}
-    </div>
-  );
-}
 
 export default function Home() {
   return (
@@ -73,7 +65,7 @@ export default function Home() {
         </div>
         <div className="showcase-track" tabIndex={0} aria-label="Project showcase, scroll sideways">
           {projects.map((project, index) => (
-            <Link className="showcase-card" href={project.url ?? "/work"} key={project.title} {...(project.url && { target: "_blank", rel: "noopener noreferrer" })}>
+            <Link className="showcase-card" href={project.url ?? project.page ?? "/work"} key={project.title} {...(project.url && { target: "_blank", rel: "noopener noreferrer" })}>
               {project.image
                 ? <div className="showcase-image" style={{ backgroundImage: `url("${project.image}")` }}></div>
                 : <div className="showcase-image"><ProjectCover title={project.title} status={project.status} /></div>}

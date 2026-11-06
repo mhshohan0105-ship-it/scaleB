@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import ProjectCover from "./components/project-cover";
 
@@ -12,6 +13,7 @@ type Project = {
   image?: string;
   accent: string;
   url?: string;
+  page?: string;
   status?: string;
 };
 
@@ -45,6 +47,7 @@ export default function Projects({ projects }: { projects: Project[] }) {
               <span className="project-index">0{index + 1} / 0{projects.length}</span>
               <span className="project-image-tag">{project.category}</span>
               {project.url && <a className="project-open" href={project.url} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${project.title}`}><ArrowUpRight size={18} /></a>}
+              {project.page && <Link className="project-open" href={project.page} aria-label={`Learn more about ${project.title}`}><ArrowUpRight size={18} /></Link>}
             </div>
             <div className="project-info"><div><span className="project-type">{project.type}</span><h3>{project.title}</h3><p>{project.description}</p></div><ArrowUpRight className="project-arrow" size={20} /></div>
           </article>

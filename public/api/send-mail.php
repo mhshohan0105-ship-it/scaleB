@@ -59,48 +59,78 @@ if (count($recent) >= MAX_PER_HOUR) {
     reply(429, ['ok' => false, 'error' => 'Too many messages. Please try again later or call us.']);
 }
 
-$form = field('form', 20) === 'estimate' ? 'estimate' : 'contact';
+$form = field('form', 20);
+if (!in_array($form, ['estimate', 'demo'], true)) {
+    $form = 'contact';
+}
 $name = oneLine(field('name', 120));
 $email = oneLine(field('email', 160));
 $phone = oneLine(field('phone', 40));
 $service = oneLine(field('service', 120));
 $message = field('message', 5000);
 $details = field('details', 2000);
+$agency = oneLine(field('agency', 160));
+$city = oneLine(field('city', 80));
+$staff = oneLine(field('staff', 40));
+$currentTool = oneLine(field('current_tool', 160));
 
-if ($name === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+if ($form === 'demo') {
+    // Demo requests are followed up by phone, so email is optional here.
+    if ($name === '' || $agency === '' || $city === '' || preg_match_all('/\d/', $phone) < 7) {
+        reply(422, ['ok' => false, 'error' => 'Please enter your name, agency name, city and a valid mobile number.']);
+    }
+    if ($email !== '' && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        reply(422, ['ok' => false, 'error' => 'Please enter a valid email or leave it empty.']);
+    }
+} elseif ($name === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
     reply(422, ['ok' => false, 'error' => 'Please enter your name and a valid email.']);
 }
 if ($form === 'contact' && $message === '') {
     reply(422, ['ok' => false, 'error' => 'Please tell us a little about your project.']);
 }
 
-$subject = $form === 'estimate'
-    ? "New estimate request from {$name}"
-    : "New enquiry from {$name}" . ($service !== '' ? " ({$service})" : '');
+if ($form === 'estimate') {
+    $subject = "New estimate request from {$name}";
+    $formTitle = 'Project cost estimator request';
+} elseif ($form === 'demo') {
+    $subject = "New ScaleB Insider demo request from {$name} ({$agency})";
+    $formTitle = 'ScaleB Insider demo request';
+} else {
+    $subject = "New enquiry from {$name}" . ($service !== '' ? " ({$service})" : '');
+    $formTitle = 'Contact form message';
+}
 
 $lines = [
-    $form === 'estimate' ? 'Project cost estimator request' : 'Contact form message',
+    $formTitle,
     str_repeat('-', 40),
     "Name:    {$name}",
-    "Email:   {$email}",
 ];
+if ($agency !== '') $lines[] = "Agency:  {$agency}";
+if ($city !== '') $lines[] = "City:    {$city}";
+if ($email !== '') $lines[] = "Email:   {$email}";
 if ($phone !== '') $lines[] = "Phone:   {$phone}";
+if ($staff !== '') $lines[] = "Staff:   {$staff}";
+if ($currentTool !== '') $lines[] = "Uses now: {$currentTool}";
 if ($service !== '') $lines[] = "Service: {$service}";
 if ($details !== '') { $lines[] = ''; $lines[] = $details; }
 if ($message !== '') { $lines[] = ''; $lines[] = 'Message:'; $lines[] = $message; }
 $lines[] = '';
 $lines[] = str_repeat('-', 40);
 $lines[] = 'Sent from scalebbd.com on ' . date('d M Y, H:i') . " (IP {$ip})";
-$lines[] = 'Reply to this email to answer the visitor directly.';
+$lines[] = $email !== ''
+    ? 'Reply to this email to answer the visitor directly.'
+    : 'No email given. Call or WhatsApp the number above.';
 
 $headers = [
     'From: ' . SITE_NAME . ' <' . TO_EMAIL . '>',
-    "Reply-To: {$name} <{$email}>",
     'MIME-Version: 1.0',
     'Content-Type: text/plain; charset=UTF-8',
     'Content-Transfer-Encoding: 8bit',
     'X-Mailer: ScaleB',
 ];
+if ($email !== '') {
+    $headers[] = "Reply-To: {$name} <{$email}>";
+}
 
 $sent = mail(
     TO_EMAIL,

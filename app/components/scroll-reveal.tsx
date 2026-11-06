@@ -7,7 +7,7 @@ const targets = [
   "main h1", "main h2", "main h3", "main p", "main .eyebrow",
   ".service-card", ".model-card", ".process-step", ".value-card", ".stats-card", ".showcase-track", ".tech-sphere", ".estimator", ".faq-item", ".cta-card", ".project-grid", ".blog-featured", ".blog-card", ".blog-cover-article",
   ".button", ".text-link", ".contact-form > *", ".blog-filters", ".project-filters",
-  ".footer-main > *", ".module-cta", ".stat", ".footer-bottom",
+  ".footer-main > *", ".module-cta", ".stat", ".footer-bottom", ".insider-shot",
 ].join(", ");
 
 // Elements that already animate on load, or live in the first screen, are left alone.
