@@ -78,6 +78,7 @@ export const projects: { title: string; category: string; type: string; descript
     category: "Our products",
     type: "Our product · Web app",
     description: "Travel agency management and accounting software. One set of books for tickets, visas, refunds and invoices.",
+    image: "/work/insider-cover.jpg",
     accent: "amber",
     page: "/work/insider/",
   },

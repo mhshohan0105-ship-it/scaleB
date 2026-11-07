@@ -47,8 +47,8 @@ const screens = [
 const questions = [
   { question: "Who is ScaleB Insider for?", answer: "Travel agencies that sell air tickets and visas and want their sales, refunds, invoices and accounts in one place." },
   { question: "Do I need to install anything?", answer: "No. It is a web app that runs in your browser on a computer or a phone." },
-  { question: "Can I see it before deciding?", answer: "Yes. We give each agency a personal demo. Send the form below and we will call you to set it up." },
-  { question: "How much does it cost?", answer: "We do not publish prices yet. Ask us during your demo and we will talk through what fits your agency." },
+  { question: "Can I try it before deciding?", answer: "Yes. Every plan starts with a 14 day free trial and no card is needed. If you prefer, send the form below and we will walk you through it in person." },
+  { question: "How much does it cost?", answer: "Plans start at ৳1,500 a month. You can see every plan and start your trial on insider.scalebbd.com." },
   { question: "Can each staff member have their own access?", answer: "Yes. Roles and permissions let you decide what each person can see and do." },
   { question: "Will invoices show my agency's details?", answer: "Yes. PDF invoices carry your agency's logo and address." },
 ];
